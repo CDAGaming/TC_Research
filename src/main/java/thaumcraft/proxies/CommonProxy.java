@@ -48,7 +48,7 @@ public class CommonProxy implements IGuiHandler, IProxy
     
     public void init(final FMLInitializationEvent event) {
         ConfigItems.init();
-        BlockDispenser.field_149943_a.func_82595_a((Object)ItemsTC.alumentum, (Object)new BehaviorDispenseAlumetum());
+        BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(ItemsTC.alumentum, new BehaviorDispenseAlumetum());
         NetworkRegistry.INSTANCE.registerGuiHandler((Object)Thaumcraft.instance, (IGuiHandler)this);
         ConfigResearch.init();
         ConfigManager.sync("thaumcraft", Config.Type.INSTANCE);
@@ -91,22 +91,22 @@ public class CommonProxy implements IGuiHandler, IProxy
             }
             if (message.key.equals("harvestStandardCrop") && message.isItemStackMessage()) {
                 final ItemStack crop = message.getItemStackValue();
-                CropUtils.addStandardCrop(crop, crop.func_77952_i());
+                CropUtils.addStandardCrop(crop, crop.getItemDamage());
             }
             if (message.key.equals("harvestClickableCrop") && message.isItemStackMessage()) {
                 final ItemStack crop = message.getItemStackValue();
-                CropUtils.addClickableCrop(crop, crop.func_77952_i());
+                CropUtils.addClickableCrop(crop, crop.getItemDamage());
             }
             if (message.key.equals("harvestStackedCrop") && message.isItemStackMessage()) {
                 final ItemStack crop = message.getItemStackValue();
-                CropUtils.addStackedCrop(crop, crop.func_77952_i());
+                CropUtils.addStackedCrop(crop, crop.getItemDamage());
             }
             if (message.key.equals("nativeCluster") && message.isStringMessage()) {
                 final String[] t = message.getStringValue().split(",");
                 if (t != null && t.length == 5) {
                     try {
-                        final ItemStack ore = new ItemStack(Item.func_150899_d(Integer.parseInt(t[0])), 1, Integer.parseInt(t[1]));
-                        final ItemStack cluster = new ItemStack(Item.func_150899_d(Integer.parseInt(t[2])), 1, Integer.parseInt(t[3]));
+                        final ItemStack ore = new ItemStack(Item.getItemById(Integer.parseInt(t[0])), 1, Integer.parseInt(t[1]));
+                        final ItemStack cluster = new ItemStack(Item.getItemById(Integer.parseInt(t[2])), 1, Integer.parseInt(t[3]));
                         Utils.addSpecialMiningResult(ore, cluster, Float.parseFloat(t[4]));
                     }
                     catch (Exception ex) {}
@@ -114,7 +114,7 @@ public class CommonProxy implements IGuiHandler, IProxy
             }
             if (message.key.equals("lampBlacklist") && message.isItemStackMessage()) {
                 final ItemStack crop = message.getItemStackValue();
-                CropUtils.blacklistLamp(crop, crop.func_77952_i());
+                CropUtils.blacklistLamp(crop, crop.getItemDamage());
             }
             if (message.key.equals("dimensionBlacklist") && message.isStringMessage()) {
                 final String[] t = message.getStringValue().split(":");
@@ -127,7 +127,7 @@ public class CommonProxy implements IGuiHandler, IProxy
             }
             if (message.key.equals("biomeBlacklist") && message.isStringMessage()) {
                 final String[] t = message.getStringValue().split(":");
-                if (t != null && t.length == 2 && Biome.func_150568_d(Integer.parseInt(t[0])) != null) {
+                if (t != null && t.length == 2 && Biome.getBiome(Integer.parseInt(t[0])) != null) {
                     try {
                         BiomeHandler.addBiomeBlacklist(Integer.parseInt(t[0]), Integer.parseInt(t[1]));
                     }
@@ -137,7 +137,7 @@ public class CommonProxy implements IGuiHandler, IProxy
             if (message.key.equals("championWhiteList") && message.isStringMessage()) {
                 try {
                     final String[] t = message.getStringValue().split(":");
-                    final Class oclass = EntityList.func_192839_a(t[0]);
+                    final Class oclass = EntityList.getClassFromName(t[0]);
                     if (oclass == null) {
                         continue;
                     }

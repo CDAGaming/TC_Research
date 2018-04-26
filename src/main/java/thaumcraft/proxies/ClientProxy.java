@@ -52,12 +52,12 @@ public class ClientProxy extends CommonProxy
     
     @Override
     public World getClientWorld() {
-        return (World)FMLClientHandler.instance().getClient().field_71441_e;
+        return (World)FMLClientHandler.instance().getClient().world;
     }
     
     @Override
     public boolean isShiftKeyDown() {
-        return GuiScreen.func_146272_n();
+        return GuiScreen.isShiftKeyDown();
     }
     
     public void setOtherBlockRenderers() {
