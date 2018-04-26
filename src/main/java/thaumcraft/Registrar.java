@@ -75,25 +75,25 @@ public final class Registrar
         PotionBlurredVision.instance = (Potion)new PotionBlurredVision(true, 8421504).setRegistryName("blurredVision");
         PotionSunScorned.instance = (Potion)new PotionSunScorned(true, 16308330).setRegistryName("sunScorned");
         PotionThaumarhia.instance = (Potion)new PotionThaumarhia(true, 6702199).setRegistryName("thaumarhia");
-        event.getRegistry().register((IForgeRegistryEntry)PotionFluxTaint.instance);
-        event.getRegistry().register((IForgeRegistryEntry)PotionVisExhaust.instance);
-        event.getRegistry().register((IForgeRegistryEntry)PotionInfectiousVisExhaust.instance);
-        event.getRegistry().register((IForgeRegistryEntry)PotionUnnaturalHunger.instance);
-        event.getRegistry().register((IForgeRegistryEntry)PotionWarpWard.instance);
-        event.getRegistry().register((IForgeRegistryEntry)PotionDeathGaze.instance);
-        event.getRegistry().register((IForgeRegistryEntry)PotionBlurredVision.instance);
-        event.getRegistry().register((IForgeRegistryEntry)PotionSunScorned.instance);
-        event.getRegistry().register((IForgeRegistryEntry)PotionThaumarhia.instance);
+        event.getRegistry().register(PotionFluxTaint.instance);
+        event.getRegistry().register(PotionVisExhaust.instance);
+        event.getRegistry().register(PotionInfectiousVisExhaust.instance);
+        event.getRegistry().register(PotionUnnaturalHunger.instance);
+        event.getRegistry().register(PotionWarpWard.instance);
+        event.getRegistry().register(PotionDeathGaze.instance);
+        event.getRegistry().register(PotionBlurredVision.instance);
+        event.getRegistry().register(PotionSunScorned.instance);
+        event.getRegistry().register(PotionThaumarhia.instance);
     }
     
     @SubscribeEvent
     public static void registerBiomes(final RegistryEvent.Register<Biome> event) {
-        BiomeHandler.MAGICAL_FOREST = new BiomeGenMagicalForest(new Biome.BiomeProperties("Magical Forest").func_185398_c(0.2f).func_185400_d(0.3f).func_185410_a(0.8f).func_185395_b(0.4f));
-        event.getRegistry().register((IForgeRegistryEntry)BiomeHandler.MAGICAL_FOREST);
-        BiomeHandler.EERIE = new BiomeGenEerie(new Biome.BiomeProperties("Eerie").func_185398_c(0.125f).func_185400_d(0.4f).func_185410_a(0.8f).func_185396_a());
-        event.getRegistry().register((IForgeRegistryEntry)BiomeHandler.EERIE);
-        BiomeHandler.ELDRITCH = new BiomeGenEldritch(new Biome.BiomeProperties("Outer Lands").func_185398_c(0.125f).func_185400_d(0.15f).func_185410_a(0.8f).func_185395_b(0.2f));
-        event.getRegistry().register((IForgeRegistryEntry)BiomeHandler.ELDRITCH);
+        BiomeHandler.MAGICAL_FOREST = new BiomeGenMagicalForest(new Biome.BiomeProperties("Magical Forest").setBaseHeight(0.2f).setHeightVariation(0.3f).setTemperature(0.8f).setRainfall(0.4f));
+        event.getRegistry().register(BiomeHandler.MAGICAL_FOREST);
+        BiomeHandler.EERIE = new BiomeGenEerie(new Biome.BiomeProperties("Eerie").setBaseHeight(0.125f).setHeightVariation(0.4f).setTemperature(0.8f).setRainDisabled());
+        event.getRegistry().register(BiomeHandler.EERIE);
+        BiomeHandler.ELDRITCH = new BiomeGenEldritch(new Biome.BiomeProperties("Outer Lands").setBaseHeight(0.125f).setHeightVariation(0.15f).setTemperature(0.8f).setRainfall(0.2f));
+        event.getRegistry().register(BiomeHandler.ELDRITCH);
         BiomeHandler.registerBiomes();
         if (ModConfig.CONFIG_WORLD.generateMagicForest) {
             BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BiomeHandler.MAGICAL_FOREST, ModConfig.CONFIG_WORLD.biomeMagicalForestWeight));

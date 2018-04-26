@@ -62,7 +62,7 @@ public class Pathfinder
         if (!isTrapped) {
             this.path.add(space.getGoalCell());
         }
-        this.path.setComplete(this.blockManager.getSpace().getGoalCell().equals(((LinkedList<Object>)this.path).getLast()));
+        this.path.setComplete(this.blockManager.getSpace().getGoalCell().equals((this.path).getLast()));
         return this.path;
     }
 }

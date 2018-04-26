@@ -15,6 +15,6 @@ public class ThaumcraftBlockManager extends BlockManager
     @Override
     public boolean isBlocked(final Cell cell) {
         final BlockPos pos = new BlockPos(cell.getX(), cell.getY(), cell.getZ());
-        return !this.world.func_175623_d(pos);
+        return !this.world.isAirBlock(pos);
     }
 }
