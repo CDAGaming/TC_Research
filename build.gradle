@@ -37,10 +37,16 @@ repositories {
         name = "CodeChicken"
         url = "http://chickenbones.net/maven/"
     }
+
+    maven {
+        name = "JitPack"
+        url = "https://jitpack.io"
+    }
 }
 
 dependencies {
     compile "codechicken:CodeChickenLib:1.12.2-3.1.7.340:deobf"
+    compile "com.github.azanor:Baubles:5df3d468af"
 }
 
 processResources {
