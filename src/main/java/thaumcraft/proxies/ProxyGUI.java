@@ -7,7 +7,7 @@ import thaumcraft.common.entities.construct.*;
 import thaumcraft.common.tiles.crafting.*;
 import thaumcraft.common.tiles.devices.*;
 import thaumcraft.common.entities.construct.golem.*;
-import thaumcraft.codechicken.lib.raytracer.*;
+import codechicken.lib.raytracer.*;
 import net.minecraft.util.math.*;
 import thaumcraft.client.gui.*;
 import thaumcraft.api.golems.seals.*;
@@ -21,46 +21,46 @@ public class ProxyGUI
         if (world instanceof WorldClient) {
             switch (ID) {
                 case 13: {
-                    return new GuiArcaneWorkbench(player.field_71071_by, (TileArcaneWorkbench)world.func_175625_s(new BlockPos(x, y, z)));
+                    return new GuiArcaneWorkbench(player.inventory, (TileArcaneWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 12: {
                     return new GuiResearchBrowser();
                 }
                 case 10: {
-                    return new GuiResearchTable(player, (TileResearchTable)world.func_175625_s(new BlockPos(x, y, z)));
+                    return new GuiResearchTable(player, (TileResearchTable)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 9: {
-                    return new GuiSmelter(player.field_71071_by, (TileSmelter)world.func_175625_s(new BlockPos(x, y, z)));
+                    return new GuiSmelter(player.inventory, (TileSmelter)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 16: {
-                    return new GuiTurretBasic(player.field_71071_by, world, (EntityTurretCrossbow)((WorldClient)world).func_73045_a(x));
+                    return new GuiTurretBasic(player.inventory, world, (EntityTurretCrossbow)((WorldClient)world).func_73045_a(x));
                 }
                 case 17: {
-                    return new GuiTurretAdvanced(player.field_71071_by, world, (EntityTurretCrossbowAdvanced)((WorldClient)world).func_73045_a(x));
+                    return new GuiTurretAdvanced(player.inventory, world, (EntityTurretCrossbowAdvanced)((WorldClient)world).func_73045_a(x));
                 }
                 case 3: {
-                    return new GuiThaumatorium(player.field_71071_by, (TileThaumatorium)world.func_175625_s(new BlockPos(x, y, z)));
+                    return new GuiThaumatorium(player.inventory, (TileThaumatorium)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 14: {
-                    return new GuiArcaneBore(player.field_71071_by, world, (EntityArcaneBore)((WorldClient)world).func_73045_a(x));
+                    return new GuiArcaneBore(player.inventory, world, (EntityArcaneBore)((WorldClient)world).func_73045_a(x));
                 }
                 case 4: {
-                    return new GuiHandMirror(player.field_71071_by, world, x, y, z);
+                    return new GuiHandMirror(player.inventory, world, x, y, z);
                 }
                 case 5: {
-                    return new GuiFocusPouch(player.field_71071_by, world, x, y, z);
+                    return new GuiFocusPouch(player.inventory, world, x, y, z);
                 }
                 case 6: {
-                    return new GuiSpa(player.field_71071_by, (TileSpa)world.func_175625_s(new BlockPos(x, y, z)));
+                    return new GuiSpa(player.inventory, (TileSpa)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 7: {
-                    return new GuiFocalManipulator(player.field_71071_by, (TileFocalManipulator)world.func_175625_s(new BlockPos(x, y, z)));
+                    return new GuiFocalManipulator(player.inventory, (TileFocalManipulator)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 19: {
-                    return new GuiGolemBuilder(player.field_71071_by, (TileGolemBuilder)world.func_175625_s(new BlockPos(x, y, z)));
+                    return new GuiGolemBuilder(player.inventory, (TileGolemBuilder)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 21: {
-                    return new GuiPotionSprayer(player.field_71071_by, (TilePotionSprayer)world.func_175625_s(new BlockPos(x, y, z)));
+                    return new GuiPotionSprayer(player.inventory, (TilePotionSprayer)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 18: {
                     final ISealEntity se = ItemGolemBell.getSeal(player);
@@ -77,7 +77,7 @@ public class ProxyGUI
                         target = ray.func_178782_a();
                         side = ray.field_178784_b;
                     }
-                    return new GuiLogistics(player.field_71071_by, world, target, side);
+                    return new GuiLogistics(player.inventory, world, target, side);
                 }
             }
         }
@@ -87,43 +87,43 @@ public class ProxyGUI
     public Object getServerGuiElement(final int ID, final EntityPlayer player, final World world, final int x, final int y, final int z) {
         switch (ID) {
             case 13: {
-                return new ContainerArcaneWorkbench(player.field_71071_by, (TileArcaneWorkbench)world.func_175625_s(new BlockPos(x, y, z)));
+                return new ContainerArcaneWorkbench(player.inventory, (TileArcaneWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 10: {
-                return new ContainerResearchTable(player.field_71071_by, (TileResearchTable)world.func_175625_s(new BlockPos(x, y, z)));
+                return new ContainerResearchTable(player.inventory, (TileResearchTable)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 9: {
-                return new ContainerSmelter(player.field_71071_by, (TileSmelter)world.func_175625_s(new BlockPos(x, y, z)));
+                return new ContainerSmelter(player.inventory, (TileSmelter)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 16: {
-                return new ContainerTurretBasic(player.field_71071_by, world, (EntityTurretCrossbow)((WorldServer)world).func_73045_a(x));
+                return new ContainerTurretBasic(player.inventory, world, (EntityTurretCrossbow)((WorldServer)world).func_73045_a(x));
             }
             case 17: {
-                return new ContainerTurretAdvanced(player.field_71071_by, world, (EntityTurretCrossbowAdvanced)((WorldServer)world).func_73045_a(x));
+                return new ContainerTurretAdvanced(player.inventory, world, (EntityTurretCrossbowAdvanced)((WorldServer)world).func_73045_a(x));
             }
             case 3: {
-                return new ContainerThaumatorium(player.field_71071_by, (TileThaumatorium)world.func_175625_s(new BlockPos(x, y, z)));
+                return new ContainerThaumatorium(player.inventory, (TileThaumatorium)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 5: {
-                return new ContainerFocusPouch(player.field_71071_by, world, x, y, z);
+                return new ContainerFocusPouch(player.inventory, world, x, y, z);
             }
             case 14: {
-                return new ContainerArcaneBore(player.field_71071_by, world, (EntityArcaneBore)((WorldServer)world).func_73045_a(x));
+                return new ContainerArcaneBore(player.inventory, world, (EntityArcaneBore)((WorldServer)world).func_73045_a(x));
             }
             case 4: {
-                return new ContainerHandMirror(player.field_71071_by, world, x, y, z);
+                return new ContainerHandMirror(player.inventory, world, x, y, z);
             }
             case 6: {
-                return new ContainerSpa(player.field_71071_by, (TileSpa)world.func_175625_s(new BlockPos(x, y, z)));
+                return new ContainerSpa(player.inventory, (TileSpa)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 7: {
-                return new ContainerFocalManipulator(player.field_71071_by, (TileFocalManipulator)world.func_175625_s(new BlockPos(x, y, z)));
+                return new ContainerFocalManipulator(player.inventory, (TileFocalManipulator)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 19: {
-                return new ContainerGolemBuilder(player.field_71071_by, (TileGolemBuilder)world.func_175625_s(new BlockPos(x, y, z)));
+                return new ContainerGolemBuilder(player.inventory, (TileGolemBuilder)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 21: {
-                return new ContainerPotionSprayer(player.field_71071_by, (TilePotionSprayer)world.func_175625_s(new BlockPos(x, y, z)));
+                return new ContainerPotionSprayer(player.inventory, (TilePotionSprayer)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 18: {
                 final ISealEntity se = ItemGolemBell.getSeal(player);
@@ -133,7 +133,7 @@ public class ProxyGUI
                 break;
             }
             case 20: {
-                return new ContainerLogistics(player.field_71071_by, world);
+                return new ContainerLogistics(player.inventory, world);
             }
         }
         return null;
