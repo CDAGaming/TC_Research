@@ -40,16 +40,16 @@ public class CommonProxy implements IGuiHandler, IProxy
         PlayerKnowledge.preInit();
         PlayerWarp.preInit();
         PacketHandler.preInit();
-        MinecraftForge.TERRAIN_GEN_BUS.register((Object)WorldEvents.INSTANCE);
-        GameRegistry.registerFuelHandler((IFuelHandler)new CraftingEvents());
-        GameRegistry.registerWorldGenerator((IWorldGenerator)ThaumcraftWorldGenerator.INSTANCE, 0);
-        MinecraftForge.EVENT_BUS.register((Object)Thaumcraft.instance);
+        MinecraftForge.TERRAIN_GEN_BUS.register(WorldEvents.INSTANCE);
+        GameRegistry.registerFuelHandler(new CraftingEvents());
+        GameRegistry.registerWorldGenerator(ThaumcraftWorldGenerator.INSTANCE, 0);
+        MinecraftForge.EVENT_BUS.register(Thaumcraft.instance);
     }
     
     public void init(final FMLInitializationEvent event) {
         ConfigItems.init();
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(ItemsTC.alumentum, new BehaviorDispenseAlumetum());
-        NetworkRegistry.INSTANCE.registerGuiHandler((Object)Thaumcraft.instance, (IGuiHandler)this);
+        NetworkRegistry.INSTANCE.registerGuiHandler(Thaumcraft.instance, this);
         ConfigResearch.init();
         ConfigManager.sync("thaumcraft", Config.Type.INSTANCE);
     }

@@ -33,16 +33,16 @@ public class ProxyGUI
                     return new GuiSmelter(player.inventory, (TileSmelter)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 16: {
-                    return new GuiTurretBasic(player.inventory, world, (EntityTurretCrossbow)((WorldClient)world).getEntityByID(x));
+                    return new GuiTurretBasic(player.inventory, world, (EntityTurretCrossbow) world.getEntityByID(x));
                 }
                 case 17: {
-                    return new GuiTurretAdvanced(player.inventory, world, (EntityTurretCrossbowAdvanced)((WorldClient)world).getEntityByID(x));
+                    return new GuiTurretAdvanced(player.inventory, world, (EntityTurretCrossbowAdvanced) world.getEntityByID(x));
                 }
                 case 3: {
                     return new GuiThaumatorium(player.inventory, (TileThaumatorium)world.getTileEntity(new BlockPos(x, y, z)));
                 }
                 case 14: {
-                    return new GuiArcaneBore(player.inventory, world, (EntityArcaneBore)((WorldClient)world).getEntityByID(x));
+                    return new GuiArcaneBore(player.inventory, world, (EntityArcaneBore) world.getEntityByID(x));
                 }
                 case 4: {
                     return new GuiHandMirror(player.inventory, world, x, y, z);
@@ -96,10 +96,10 @@ public class ProxyGUI
                 return new ContainerSmelter(player.inventory, (TileSmelter)world.getTileEntity(new BlockPos(x, y, z)));
             }
             case 16: {
-                return new ContainerTurretBasic(player.inventory, world, (EntityTurretCrossbow)((WorldServer)world).getEntityByID(x));
+                return new ContainerTurretBasic(player.inventory, world, (EntityTurretCrossbow) world.getEntityByID(x));
             }
             case 17: {
-                return new ContainerTurretAdvanced(player.inventory, world, (EntityTurretCrossbowAdvanced)((WorldServer)world).getEntityByID(x));
+                return new ContainerTurretAdvanced(player.inventory, world, (EntityTurretCrossbowAdvanced) world.getEntityByID(x));
             }
             case 3: {
                 return new ContainerThaumatorium(player.inventory, (TileThaumatorium)world.getTileEntity(new BlockPos(x, y, z)));
@@ -108,7 +108,7 @@ public class ProxyGUI
                 return new ContainerFocusPouch(player.inventory, world, x, y, z);
             }
             case 14: {
-                return new ContainerArcaneBore(player.inventory, world, (EntityArcaneBore)((WorldServer)world).getEntityByID(x));
+                return new ContainerArcaneBore(player.inventory, world, (EntityArcaneBore) world.getEntityByID(x));
             }
             case 4: {
                 return new ContainerHandMirror(player.inventory, world, x, y, z);

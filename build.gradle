@@ -33,6 +33,7 @@ minecraft {
 }
 
 repositories {
+    mavenCentral()
     maven {
         name = "CodeChicken"
         url = "http://chickenbones.net/maven/"

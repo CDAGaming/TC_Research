@@ -47,12 +47,12 @@ public class ClientProxy extends CommonProxy
     }
     
     public void registerKeyBindings() {
-        MinecraftForge.EVENT_BUS.register((Object)this.kh);
+        MinecraftForge.EVENT_BUS.register(this.kh);
     }
     
     @Override
     public World getClientWorld() {
-        return (World)FMLClientHandler.instance().getClient().world;
+        return FMLClientHandler.instance().getClient().world;
     }
     
     @Override
@@ -65,6 +65,6 @@ public class ClientProxy extends CommonProxy
     
     @Override
     public void registerModel(final ItemBlock itemBlock) {
-        ModelLoader.setCustomModelResourceLocation((Item)itemBlock, 0, new ModelResourceLocation(itemBlock.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(itemBlock, 0, new ModelResourceLocation(itemBlock.getRegistryName(), "inventory"));
     }
 }
